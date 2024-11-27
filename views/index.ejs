@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+
+            const input = form.querySelector('input[type="text"]').value;
+            const newElement = document.createElement('div'); // Create a new div element
+            newElement.textContent = input; // Set the text content of the new element to the input value
+
+            // Append the new element to the page (e.g., inside a container with id 'content')
+            document.getElementById('content').appendChild(newElement);
+        });
+    });
+    </script>
+  <style>
+    body {
+        text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1><%= message %></h1>
+    <form action="">
+        <input type="text" name="inputText" id="inputText">
+        <button type="submit">Add to Page</button>
+    </form>
+
+    <!-- Container to hold the new elements -->
+    
+
+    <h2>Admins</h2>
+    <% for(var i=0; i<adminData.length; i++) {%>
+        <li><%= adminData[i].name %></li>
+    <% } %>
+
+    <h2>Users</h2>
+    <% for(var i=0; i<userData.length; i++) {%>
+        <li><%= userData[i].name %></li>
+    <% } %>
+
+    <h2>Posts</h2>
+    <% for(var i=5; i<postData.length; i++) {%>
+        <h3><%= postData[i].title %></h3>
+        <p><%= postData[i].content %></p>
+    <% } %>
+    <div id="content"></div>
+</body>
+</html>
